@@ -7,7 +7,7 @@
 /etc/rc.d/init.d/krb5kdc restart
 /etc/rc.d/init.d/kadmin restart
 
-cd /opt/zookeeper-3.5.2-alpa/conf
+cd /opt/zookeeper-3.5.2-alpha/conf
 
 kadmin.local <<EOF
 addprinc -randkey zookeeper/kerberos.example.com@EXAMPLE.COM
