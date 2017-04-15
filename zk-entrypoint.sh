@@ -10,14 +10,17 @@
 cd /opt/zookeeper-3.5.2-alpha/conf
 
 kadmin.local <<EOF
-addprinc -randkey zookeeper/kerberos.example.com@EXAMPLE.COM
+addprinc -randkey zookeeper/localhost@EXAMPLE.COM
 addprinc -randkey zookeeper-client@EXAMPLE.COM
-xst -k zookeeper.keytab zookeeper/kerberos.example.com@EXAMPLE.COM
+xst -k zookeeper.keytab zookeeper/localhost@EXAMPLE.COM
 xst -k zookeeper-client.keytab zookeeper-client@EXAMPLE.COM
 exit
 EOF
 
 cd /opt/zookeeper-3.5.2-alpha
+
+# Set up our own krb5.conf
+mv /root/krb5.conf /etc/krb5.conf
 
 # Start ZooKeeper
 ./bin/zkServer.sh start-foreground

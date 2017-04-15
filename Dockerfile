@@ -15,6 +15,7 @@ ADD ./zoo.cfg /opt/zookeeper-3.5.2-alpha/conf/zoo.cfg
 ADD ./java.env /opt/zookeeper-3.5.2-alpha/conf/java.env
 
 ADD ./zookeeper_setup.sh /root/zookeeper_setup.sh
+ADD ./krb5.conf /root/krb5.conf
 
 # Set up ZooKeeper
 RUN ./root/zookeeper_setup.sh
