@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Set correct time
+#rm /etc/localtime
+#ln -s /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+
 # Credit to Phunt
 # KDC master key is "kerberos" - don't use for production! dev/test only.
 /usr/sbin/kdb5_util -P kerberos create -s

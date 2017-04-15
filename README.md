@@ -6,7 +6,8 @@ Took a lot of help by the docker setup Phunt has (https://github.com/phunt/zk-do
 
 Run
 ```
-$ docker run -d --name zookeeper --net=host -p 2181:2181 -p 88:88 meldrum/docker-zookeeper-kerberos 
+$ docker run -d --name zookeeper --net=host meldrum/docker-zookeeper-kerberos
 ```
+
 
 

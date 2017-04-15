@@ -23,7 +23,7 @@ RUN ./root/zookeeper_setup.sh
 WORKDIR /opt/zookeeper-3.5.2-alpha
 ADD ./zk-entrypoint.sh .
 
-EXPOSE 2181 88 749
+EXPOSE 2181 88/udp 88/tcp 749
 RUN yum clean all
 
 ENTRYPOINT ["./zk-entrypoint.sh"]
