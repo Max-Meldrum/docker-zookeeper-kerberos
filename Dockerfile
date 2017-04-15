@@ -12,19 +12,17 @@ RUN yum install -y \
 RUN wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.5.2-alpha/zookeeper-3.5.2-alpha.tar.gz | tar -xzf - -C /opt
 ADD ./jaas.conf /opt/zookeeper-3.5.2-alpha/conf/jaas.conf
 ADD ./zoo.cfg /opt/zookeeper-3.5.2-alpha/conf/zoo.cfg
+ADD ./java.env /opt/zookeeper-3.5.2-alpha/conf/java.env
 
-ADD ./kerberos_setup.sh /root/kerberos_setup.sh
 ADD ./zookeeper_setup.sh /root/zookeeper_setup.sh
 
-# Set up Kerberos
-RUN ./root/kerberos_setup.sh
-
+# Set up ZooKeeper
 RUN ./root/zookeeper_setup.sh
 
 WORKDIR /opt/zookeeper-3.5.2-alpha
+ADD ./zk-entrypoint.sh .
 
 EXPOSE 2181 88 749
 RUN yum clean all
 
-ENTRYPOINT ["./bin/zkServer.sh"]
-CMD ["start-foreground"]
+ENTRYPOINT ["./zk-entrypoint.sh"]

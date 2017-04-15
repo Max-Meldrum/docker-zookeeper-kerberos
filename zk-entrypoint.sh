@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 # Credit to Phunt
 # KDC master key is "kerberos" - don't use for production! dev/test only.
@@ -16,4 +16,9 @@ xst -k zookeeper.keytab zookeeper/kerberos.example.com@EXAMPLE.COM
 xst -k zookeeper-client.keytab zookeeper-client@EXAMPLE.COM
 exit
 EOF
+
+cd /opt/zookeeper-3.5.2-alpha
+
+# Start ZooKeeper
+./bin/zkServer.sh start-foreground
 
